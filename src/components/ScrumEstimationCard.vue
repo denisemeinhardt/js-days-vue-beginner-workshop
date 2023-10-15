@@ -1,16 +1,15 @@
 <template>
-  <div
+  <ToggleableCard
+    :selected="isSelected(props.cardValue)"
     @click="setSelectedCard(props.cardValue)"
-    class="awesomescrumestimation-card"
-    :class="{
-      'awesomescrumestimation-card--selected': isSelected(props.cardValue),
-    }"
   >
     {{ props.cardValue }}
-  </div>
+  </ToggleableCard>
 </template>
 
 <script lang="ts" setup>
+import ToggleableCard from "./ToggleableCard.vue";
+
 const props = defineProps<{
   cardValue: string;
   selectedCardValue?: string;
@@ -26,7 +25,3 @@ const isSelected = (value: string) => {
   return false;
 };
 </script>
-
-<style lang="scss" scoped>
-@import "../style/_scrumestimation_card.scss";
-</style>
